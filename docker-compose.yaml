@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysql_db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=spring_adminlte
+    ports:
+      - "3306:3306"
+    volumes:
+      - spring_adminlte_db:/var/lib/mysql
+
+volumes:
+  spring_adminlte_db:

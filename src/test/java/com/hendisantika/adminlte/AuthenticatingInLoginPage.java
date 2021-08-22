@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,9 +22,12 @@ public class AuthenticatingInLoginPage {
     @Given("User accesses the login page at {string}")
     public void user_accesses_the_login_page(String url) {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(url);
+        ChromeOptions opt = new ChromeOptions();
+        opt.setHeadless(true);
+        driver = new ChromeDriver(opt);
         loginPage = new Login(driver);
+
+        driver.get(url);
     }
 
     @When("input {string} as username")

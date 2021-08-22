@@ -5,6 +5,12 @@ default:
 # before_script:
   #  we are going to install the selenium dependencies here
 
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository
 
 stages:          # List of stages for jobs, and their order of execution
   - clean
@@ -18,7 +24,6 @@ clean-job:
   script:
     - mvn clean
 
-
 build-job:
   stage: build
   script:
@@ -30,7 +35,7 @@ build-job:
 test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - mvn test
+    - mvn test -Dmaven.test.skip
 
 
 # run the code coverage analysis

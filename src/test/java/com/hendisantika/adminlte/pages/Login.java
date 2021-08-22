@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Login extends PageObject {
-    @FindBy(xpath = "//body/div[1]/div[2]/form[1]/div[1]/input[1]")
+    @FindBy(name = "username")
     private WebElement usernameInput;
-    @FindBy(xpath = "//body/div[1]/div[2]/form[1]/div[2]/input[1]")
+    @FindBy(name = "password")
     private WebElement passwordInput;
     @FindBy(xpath = "//button[contains(text(),'Login')]")
     private WebElement loginButton;
@@ -22,9 +22,9 @@ public class Login extends PageObject {
         usernameInput.sendKeys(Keys.chord(username));
     }
 
-    public void typingInPasswordInput(String username) {
-        usernameInput.clear();
-        usernameInput.sendKeys(Keys.chord(username));
+    public void typingInPasswordInput(String password) {
+        passwordInput.clear();
+        passwordInput.sendKeys(Keys.chord(password));
     }
 
     public void clickingOnLoginButton() {

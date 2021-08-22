@@ -45,5 +45,6 @@ public class AuthenticatingInLoginPage {
     public void check_if_the_title_is(String expectedTitle) {
         final String title = driver.getTitle();
         assertThat(title).isEqualTo(expectedTitle);
+        driver.quit();
     }
 }

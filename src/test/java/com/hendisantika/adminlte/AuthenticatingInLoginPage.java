@@ -1,12 +1,13 @@
 package com.hendisantika.adminlte;
 
 import com.hendisantika.adminlte.pages.Login;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.seljup.SeleniumExtension;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,14 +20,22 @@ public class AuthenticatingInLoginPage {
     private WebDriver driver;
     private Login loginPage;
 
-    @Given("User accesses the login page at {string}")
-    public void user_accesses_the_login_page(String url) {
+    @Before // It's executed as the first step
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions opt = new ChromeOptions();
         opt.setHeadless(true);
         driver = new ChromeDriver(opt);
         loginPage = new Login(driver);
+    }
 
+    @After  // It's executed as the final step
+    public void tearDown() {
+        driver.quit();
+    }
+
+    @Given("User accesses the login page at {string}")
+    public void user_accesses_the_login_page(String url) {
         driver.get(url);
     }
 
@@ -49,6 +58,5 @@ public class AuthenticatingInLoginPage {
     public void check_if_the_title_is(String expectedTitle) {
         final String title = driver.getTitle();
         assertThat(title).isEqualTo(expectedTitle);
-        driver.quit();
     }
 }

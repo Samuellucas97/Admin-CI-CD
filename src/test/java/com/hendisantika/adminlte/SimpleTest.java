@@ -1,8 +1,14 @@
 package com.hendisantika.adminlte;
 
-import org.junit.jupiter.api.AfterAll;
+
+import io.github.bonigarcia.seljup.SeleniumExtension;
+import io.github.bonigarcia.seljup.SeleniumJupiter;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -10,33 +16,24 @@ import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(SeleniumExtension.class)
 final class SimpleTest {
     private static String baseUrl;
-    private static WebDriver driver;
 
     @BeforeAll
     static void setUp() {
         baseUrl = "https://www.imd.ufrn.br/portal/";
-
-        System.setProperty("webdriver.chrome.driver",
-                "/home/samuel/Documents/spring-boot-adminlte/drivers/chrome/93/chromedriver"
-        );
-
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
-        driver.manage().window().maximize();
-    }
-
-    @AfterAll
-    static void tearDown() {
-        driver.quit();
     }
 
     @Test
-    void acessingIMDPage() {
+    void acessingIMDPage(ChromeDriver driver) {
+        driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
+        driver.manage().window().maximize();
+
         driver.get(baseUrl);
         final String titlePage = driver.getTitle();
         final String expectedTitlePage = "IMD | Instituto Metrópole Digital";
         assertThat(titlePage).isEqualTo(expectedTitlePage);
     }
 }
+

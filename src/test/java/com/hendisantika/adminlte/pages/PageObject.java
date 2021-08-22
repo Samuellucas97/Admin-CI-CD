@@ -1,8 +1,12 @@
 package com.hendisantika.adminlte.pages;
 
+import io.github.bonigarcia.seljup.SeleniumExtension;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+
+@ExtendWith(SeleniumExtension.class)
 public class PageObject {
     protected WebDriver driver;
 

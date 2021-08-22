@@ -1,4 +1,4 @@
-package com.hendisantika.adminlte.pages;
+package com.hendisantika.adminlte.end2end.pages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

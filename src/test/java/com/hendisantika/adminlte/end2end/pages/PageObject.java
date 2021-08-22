@@ -1,4 +1,4 @@
-package com.hendisantika.adminlte.pages;
+package com.hendisantika.adminlte.end2end.pages;
 
 import io.github.bonigarcia.seljup.SeleniumExtension;
 import org.junit.jupiter.api.extension.ExtendWith;

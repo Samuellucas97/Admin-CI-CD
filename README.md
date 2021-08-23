@@ -52,7 +52,7 @@ Since you have a database running in you local machine, you have the following s
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
 |           To run tests          |     `mvn clean test`    |
 |      To generate project's build     |    `mvn clean package`    |
-
+|  To run end-to-end test | `mvn test -Dtest=com.hendisantika.adminlte.CucumberRunnerTest.java`
 
 If the application is running, you will have only this user registered:
 

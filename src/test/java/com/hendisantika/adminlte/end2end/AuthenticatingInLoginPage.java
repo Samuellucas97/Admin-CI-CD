@@ -6,25 +6,40 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.spring.CucumberContextConfiguration;
+import io.github.bonigarcia.seljup.SeleniumExtension;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import javax.ws.rs.core.Application;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
+@CucumberContextConfiguration
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class AuthenticatingInLoginPage {
+    @Autowired
     private WebDriver driver;
+
     private Login loginPage;
+
+    @LocalServerPort
+    private int port;
 
     @Before // This annotation is from Cucumber, not JUnit. It's executed as the first step
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
-        driver = new ChromeDriver(options);
         loginPage = new Login(driver);
     }
+
     @After  // This annotation is from Cucumber, not JUnit. It's executed as the final step
     public void tearDown() {
         driver.quit();
@@ -32,8 +47,10 @@ public class AuthenticatingInLoginPage {
 
     @Given("User accesses the login page at {string}")
     public void user_accesses_the_login_page(String url) {
-        driver.get(url);
+        driver.get("http://localhost:"+port+url);
     }
+
+
     @When("input {string} as username")
     public void input_as_username(String username) {
         loginPage.typingInUsernameInput(username);

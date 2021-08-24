@@ -27,7 +27,7 @@ clean-job:
 build-job:
   stage: build
   script:
-    - mvn package
+    - mvn package -Dmaven.test.skip
   artifacts:
     paths:
       - target/spring-adminlte2-0.0.1-SNAPSHOT.jar
@@ -35,7 +35,7 @@ build-job:
 test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - mvn test -Dmaven.test.skip
+    - mvn test
 
 
 # run the code coverage analysis

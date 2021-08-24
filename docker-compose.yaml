@@ -8,7 +8,20 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - spring_adminlte_db:/var/lib/mysql
+      - spring_adminlte_mysql_db:/var/lib/mysql
+
+  postgres_db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=spring_adminlte
+    ports:
+      - "5432:5432"
+    volumes:
+      - spring_adminlte_postgresql_db:/var/lib/postgresql/data/pgdata
+
 
 volumes:
-  spring_adminlte_db:
+  spring_adminlte_mysql_db:
+  spring_adminlte_postgresql_db:

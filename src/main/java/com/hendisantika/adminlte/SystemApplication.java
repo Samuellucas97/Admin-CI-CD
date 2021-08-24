@@ -14,11 +14,11 @@ public class SystemApplication {
 		SpringApplication.run(SystemApplication.class, args);
 	}
 
-	@Bean
-	public WebDriver webDriver() {
-		WebDriverManager.chromedriver().setup();
-        final ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
-		return new ChromeDriver(options);
-	}
+//	@Bean
+//	public WebDriver webDriver() {
+//		WebDriverManager.chromedriver().setup();
+//        final ChromeOptions options = new ChromeOptions();
+//        options.setHeadless(true);
+//		return new ChromeDriver(options);
+//	}
 }

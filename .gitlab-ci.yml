@@ -24,7 +24,7 @@ deploy job:
   script:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/admin-lte2.git
     - git push -f heroku HEAD:master
-    - echo “Deployed to Staging Server https://admin-lte2.herokuapp.com/"
+    - echo “Deployed to Server https://admin-lte2.herokuapp.com/"
   environment:
     name: staging
     url: https://admin-lte2.herokuapp.com/

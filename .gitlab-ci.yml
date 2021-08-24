@@ -2,22 +2,11 @@
 default:
   image: markhobson/maven-chrome:jdk-11
 
-# before_script:
-  #  we are going to install the selenium dependencies here
-
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-cache:
-  paths:
-    - .m2/repository
-
-stages:          # List of stages for jobs, and their order of execution
+stages:
   - clean
   - build
   - test
-#  - promotion
-#  - deploy
+
 
 clean-job:
   stage: clean
@@ -30,45 +19,10 @@ build-job:
     - mvn package -Dmaven.test.skip
   artifacts:
     paths:
-      - target/spring-adminlte2-0.0.1-SNAPSHOT.jar
+      - target/*.jar
 
-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
+test-job:
+  stage: test
   script:
     - mvn test
-
-
-# run the code coverage analysis
-# coverage-job:
-#   stage: test
-#   script:
-#     - gradle jacocoTestReport -b build.gradle
-#   artifacts:
-#     paths:
-#       - build/reports/tests/test/index.html
-
-
-
-## wait for the user action after analysis of the results
-#promotion-job:
-#  stage: promotion
-#  script:
-#    - echo "waiting  for user input"
-#  # make this job manual, make continuous delivery but not continuos deploy
-#  when: manual
-
-# # run database migration
-# migration job:
-#   stage: migration
-#   script:
-#     - echo "Realizando Migração em $FLYWAY_URL $FLYWAY_USER $FLYWAY_PASSWORD"
-#     #- gradle flywayMigrate -b build.gradle -Dflyway_url=$FLYWAY_URL -Dflyway_user=$FLYWAY_USER -Dflyway_password=$FLYWAY_PASSWORD
-
-
-
-#deploy-job:      # This job runs in the deploy stage.
-#  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-#  script:
-#    - echo "Deploying application..."
-#    - echo "Application successfully deployed."
 

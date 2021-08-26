@@ -7,13 +7,16 @@ This repository contains a web application implemented with Spring Framework (Ja
 - [Prerequisites](#prerequisites)
 - [How to Install and to Run](#how-to-install-and-to-run)
 - [Available Pages](#available-pages)
+- [GitLab CI/CD & Heroku](#gitlab-ci/cd-&-heroku)
 
 
 ## Prerequisites
 
 - Java (version 11)
+- Postgres database service
 - Docker compose (_optional_)
 - Maven
+- Google Chrome
 
 ## How to Install and to Run
 
@@ -51,7 +54,6 @@ Since you have a database running in you local machine, you have the following s
 |                Command               |              Information             |
 |:------------------------------------:|:------------------------------------:|
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
-|           To run tests          |     `mvn clean test`    |
 |      To generate project's build     |    `mvn clean package`    |
 |  To run end-to-end test | `mvn test`
 
@@ -65,9 +67,28 @@ If the application is running, you will have only this user registered:
 | Title Page |                URL               |              Screenshots             |
 |:------------------------------------:|:------------------------------------:|:------------------------------------:|
 | Login | http://localhost:8080/login |          ![Login Page](img/login.png "Login Page")         |
-| Dashboard | http://localhost:8080/login |          ![Dashboard Page](img/dashboard.png "Dashboard Page")        |
+| Dashboard | http://localhost:8080/ |          ![Dashboard Page](img/dashboard.png "Dashboard Page")        |
 | Add Customer | http://localhost:8080/login |          ![Add Customer Page](img/add.png "Add Customer Page")        |
 | List of Customers | http://localhost:8080/login |          ![List Page](img/list2.png "List Page")        |
 
 
+## GitLab CI/CD & Heroku
 
+If you have cloned this repository, and you would like to execute the pipeline available on `.gitlab-ci.yaml`, you have: 
+
+1. access the Heroku platform
+2. create two new Heroku app (staging app and production app)
+3. add Postgres as add-on
+4. get Heroku API Key from your account
+5. access GitLab.com platform
+6. create a new project
+7. choose the option`Run CI/CD for external repository`
+8. import from GitHub 
+   1. For this, you will need connect your GitHub account with your GitLab account
+9. Create new variables in `Setting -> CI/CD`
+   1. name: HEROKU_APP_STAGING; value: `<name of your staging app>`
+   2. name: HEROKU_APP_PRODUCTION; value: `<name of your production app>`
+   3. name: HEROKU_API_KEY; value: `<heroku api key>`
+
+
+With the pipeline result is ok, then try to access your site 

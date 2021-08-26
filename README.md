@@ -91,4 +91,4 @@ If you have cloned this repository, and you would like to execute the pipeline a
    3. name: HEROKU_API_KEY; value: `<heroku api key>`
 
 
-With the pipeline result is ok, then try to access your site 
+With the pipeline result is ok, then try to access your site in [https://<HEROKU_APP_PRODUCTION>.herokuapp.com]() 

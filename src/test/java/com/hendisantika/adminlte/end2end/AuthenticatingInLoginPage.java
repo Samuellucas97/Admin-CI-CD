@@ -20,10 +20,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class AuthenticatingInLoginPage {
     @Autowired
     private WebDriver driver;
-
     @Autowired
     private Login loginPage;
-
     @LocalServerPort
     private int port;
 

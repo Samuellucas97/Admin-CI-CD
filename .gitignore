@@ -77,3 +77,6 @@ target/
 spring-adminlte2.iml
 
 .m2
+
+
+.env

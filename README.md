@@ -1,5 +1,6 @@
 
-This repository contains a web application implemented with Spring Framework (Java). The application is a CRUD of an admin system. 
+This repository contains a web application implemented with Spring Framework (Java). The application is a CRUD of an admin system available in [spring-boot-adminlte](https://github.com/hendisantika/spring-boot-adminlte) project.  
+. 
 
 
 ### Content
@@ -52,7 +53,7 @@ Since you have a database running in you local machine, you have the following s
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
 |           To run tests          |     `mvn clean test`    |
 |      To generate project's build     |    `mvn clean package`    |
-|  To run end-to-end test | `mvn test -Dtest=com.hendisantika.adminlte.CucumberRunnerTest.java`
+|  To run end-to-end test | `mvn test`
 
 If the application is running, you will have only this user registered:
 
@@ -70,6 +71,3 @@ If the application is running, you will have only this user registered:
 
 
 
-## Reference
-
-This project is based on the [spring-boot-adminlte](https://github.com/hendisantika/spring-boot-adminlte) project.  

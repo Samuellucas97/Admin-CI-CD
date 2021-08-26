@@ -1,12 +1,17 @@
 default:
-  image: markhobson/maven-chrome:jdk-11
+  image: maven:3.8-openjdk-11
+  
+before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
 
 stages:
   - build
   - test
   - deploy
 
-build job:
+build:
   stage: build
   script:
     - mvn package -Dmaven.test.skip
@@ -14,19 +19,26 @@ build job:
     paths:
       - target/*.jar
 
-test job:
+test:
+  image: markhobson/maven-chrome:jdk-11
   stage: test
   script:
     - mvn test
 
-deploy job:
+
+staging:
   stage: deploy
   script:
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/admin-lte2.git
-    - git push -f heroku HEAD:master
-    - echo “Deployed to Server https://admin-lte2.herokuapp.com/"
-  environment:
-    name: staging
-    url: https://admin-lte2.herokuapp.com/
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api_key=$HEROKU_API_KEY
+  
+production:
+  stage: deploy
+  when: manual
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api_key=$HEROKU_API_KEY
   only:
-    - master
+  - master
+
+

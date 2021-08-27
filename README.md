@@ -38,7 +38,7 @@ Otherwise, **it's very important to have the same configuration used in `applica
 We are setting the file `src/main/resource/application.yaml` as following:
 
 - Database name: `spring_adminlte`
-- Database user: `root`
+- Database user: `sa`
 - Database password: `root`
 
 ### Running database service with Docker compose (_optional_)

@@ -1,6 +1,12 @@
 
 This repository contains a web application implemented with Spring Framework (Java). The application is a CRUD of an admin system available in [spring-boot-adminlte](https://github.com/hendisantika/spring-boot-adminlte) project.  
-. 
+
+We use GitLab CI/CD & Heroku to execute the continuous delivery pipeline. You can found the GitLab version of this project here:  [https://gitlab.com/Samuellucas97/Admin-CI-CD](https://gitlab.com/Samuellucas97/Admin-CI-CD).
+
+App deployed:
+- `Staging mode`: [https://admin-lte2-staging.herokuapp.com](https://admin-lte2-staging.herokuapp.com)
+- `Production mode`: [https://admin-lte2.herokuapp.com](https://admin-lte2.herokuapp.com)
+
 
 
 ### Content

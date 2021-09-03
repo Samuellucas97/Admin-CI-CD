@@ -12,8 +12,10 @@ App deployed:
 ### Content
 - [Prerequisites](#prerequisites)
 - [How to Install and to Run](#how-to-install-and-to-run)
+  - [Running database service with Docker compose (_optional_)](#running-database-service-with-docker-compose-optional)
+  - [Running application](#running-application)
 - [Available Pages](#available-pages)
-- [GitLab CI/CD & Heroku](#gitlab-ci/cd-&-heroku)
+- [GitLab CI/CD & Heroku](#gitlab-cicd--heroku)
 
 
 ## Prerequisites
@@ -61,7 +63,8 @@ Since you have a database running in you local machine, you have the following s
 |:------------------------------------:|:------------------------------------:|
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
 |      To generate project's build     |    `mvn clean package`    |
-|  To run end-to-end test | `mvn test`
+|  To run end-to-end test | `mvn test` |
+| To generate HTML test report  (available in `target/site/surefire-report.html`)| `mvn surefire-report:report site -DgenerateReports=false` |
 
 If the application is running, you will have only this user registered:
 

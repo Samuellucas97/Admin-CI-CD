@@ -64,7 +64,7 @@ Since you have a database running in you local machine, you have the following s
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
 |      To generate project's build     |    `mvn clean package`    |
 |  To run end-to-end test | `mvn test` |
-| To generate HTML test report  (available in `target/site/surefire-report.html`)| `mvn surefire-report:report site -DgenerateReports=false` |
+| To run tests and generate HTML test report  (available in `target/site/surefire-report.html`)| `mvn surefire-report:report site -DgenerateReports=false` |
 
 If the application is running, you will have only this user registered:
 

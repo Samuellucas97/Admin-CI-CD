@@ -24,7 +24,11 @@ test:
   needs: [build]
   stage: test
   script:
-    - mvn test
+    - mvn surefire-report:report site -DgenerateReports=false
+  artifacts:
+    paths:
+      - "target/site"
+    expire_in: 30 days
 
 
 staging:

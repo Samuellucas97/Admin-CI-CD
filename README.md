@@ -1,4 +1,4 @@
-
+    
 This repository contains a web application implemented with Spring Framework (Java). The application is a CRUD of an admin system available in [spring-boot-adminlte](https://github.com/hendisantika/spring-boot-adminlte) project.  
 
 We use GitLab CI/CD & Heroku to execute the continuous delivery pipeline. You can found the GitLab version of this project here:  [https://gitlab.com/Samuellucas97/Admin-CI-CD](https://gitlab.com/Samuellucas97/Admin-CI-CD).
@@ -63,8 +63,10 @@ Since you have a database running in you local machine, you have the following s
 |:------------------------------------:|:------------------------------------:|
 | To run the application  on port 8080 |          `mvn spring-boot:run`         |
 |      To generate project's build     |    `mvn clean package`    |
-|  To run end-to-end test | `mvn test` |
+|  To run end-to-end test (headless mode activated) | `mvn test` |
+|  To run end-to-end test (with graphic interface activated) | `HEADLESS=false mvn test` |
 | To run tests and generate HTML test report  (available in `target/site/surefire-report.html`)| `mvn surefire-report:report site -DgenerateReports=false` |
+| To run end-to-end test on staging environment | `SPRING_PROFILES_ACTIVE='staging' HOST='<protocol><your host>' mvn clean test` |
 
 If the application is running, you will have only this user registered:
 

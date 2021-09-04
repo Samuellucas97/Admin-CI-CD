@@ -1,0 +1,1 @@
+host: ${HOST:https://admin-lte2-staging.herokuapp.com}

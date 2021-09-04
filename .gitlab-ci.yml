@@ -30,14 +30,15 @@ test:
       - "target/site"
     expire_in: 30 days
 
-
 staging:
   needs: [test]
   stage: deploy
   script:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api_key=$HEROKU_API_KEY
-  
+    - SPRING_PROFILES_ACTIVE='staging' HOST='https://${HEROKU_APP_STAGING}.herokuapp.com' mvn clean test
+
+
 production:
   stage: deploy
   needs: [test]

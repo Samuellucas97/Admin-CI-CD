@@ -31,6 +31,7 @@ test:
     expire_in: 30 days
 
 staging:
+  image: markhobson/maven-chrome:jdk-11
   needs: [test]
   stage: deploy
   script:
